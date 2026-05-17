@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mana Postpartum | Find Your Doula</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --cream: #FBF9F6;
+            --warm-white: #FFFFFF;
+            --blush: #D4A5A5;
+            --blush-dark: #C08B8B;
+            --dusty-rose: #E8D4D4;
+            --sage: #A8B5A0;
+            --sage-light: #D4DDD0;
+            --charcoal: #3D3D3D;
+            --warm-gray: #6E6E6E;
+            --soft-pink: #F5EDED;
+            --linen: #F7F3EF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* Grain texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--cream) 0%, transparent 100%);
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: var(--cream);
+            box-shadow: 0 2px 30px rgba(45, 42, 38, 0.06);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: var(--charcoal);
+        }
+
+        .logo span {
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--warm-gray);
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--blush);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--charcoal);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 8rem 4% 4rem;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--blush);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--blush);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--blush);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--warm-gray);
+            max-width: 480px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .hero-image-frame {
+            position: relative;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+        }
+
+        .hero-image-frame::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--sage-light);
+            z-index: -1;
+        }
+
+        .hero-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(10%) brightness(102%);
+        }
+
+        .floating-accent {
+            position: absolute;
+            bottom: -30px;
+            left: -40px;
+            background: var(--warm-white);
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(45, 42, 38, 0.08);
+        }
+
+        .floating-accent p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--charcoal);
+            max-width: 200px;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--warm-gray);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-indicator svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--blush);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 4%;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 5rem;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .section-header p {
+            color: var(--warm-gray);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            background: var(--warm-white);
+            position: relative;
+        }
+
+        .philosophy::before {
+            content: '"';
+            position: absolute;
+            top: 4rem;
+            left: 10%;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15rem;
+            color: var(--sage-light);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .philosophy-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .philosophy-card {
+            padding: 2.5rem;
+            background: var(--cream);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .philosophy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--blush);
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(45, 42, 38, 0.08);
+        }
+
+        .philosophy-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .philosophy-card p {
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Doula Grid */
+        .doulas-section {
+            background: var(--linen);
+        }
+
+        .doulas-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 3rem;
+        }
+
+        .doula-card {
+            background: var(--warm-white);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .doula-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 80px rgba(45, 42, 38, 0.12);
+        }
+
+        .doula-image {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .doula-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(45, 42, 38, 0.2), transparent);
+        }
+
+        .doula-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: sepia(8%) brightness(102%);
+        }
+
+        .doula-card:hover .doula-image img {
+            transform: scale(1.05);
+        }
+
+        .doula-badge {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: var(--warm-white);
+            padding: 0.5rem 1rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--blush-dark);
+            z-index: 2;
+        }
+
+        .doula-content {
+            padding: 2rem 2rem 2.5rem;
+        }
+
+        .doula-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .doula-specialties {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
+        }
+
+        .specialty-tag {
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            padding: 0.4rem 0.8rem;
+            background: var(--sage-light);
+            color: var(--charcoal);
+            opacity: 0.8;
+        }
+
+        .doula-excerpt {
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .doula-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--blush-dark);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: gap 0.3s ease;
+        }
+
+        .doula-link:hover {
+            gap: 1rem;
+        }
+
+        .doula-link svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .doula-link:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Featured Doula (large card) */
+        .doula-card.featured {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .doula-card.featured .doula-image {
+            aspect-ratio: auto;
+        }
+
+        .doula-card.featured .doula-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem;
+        }
+
+        .doula-card.featured .doula-excerpt {
+            -webkit-line-clamp: 6;
+        }
+
+        /* Offerings Section */
+        .offerings {
+            background: var(--charcoal);
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offerings::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--blush-dark) 0%, transparent 70%);
+            opacity: 0.1;
+        }
+
+        .offerings .section-header h2 {
+            color: var(--cream);
+        }
+
+        .offerings .section-header p {
+            color: rgba(250, 247, 242, 0.7);
+        }
+
+        .offerings-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .offering-card {
+            padding: 3rem;
+            border: 1px solid rgba(250, 247, 242, 0.1);
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .offering-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--blush-dark) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .offering-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .offering-card:hover {
+            border-color: var(--blush);
+            transform: translateY(-4px);
+        }
+
+        .offering-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--blush);
+            opacity: 0.6;
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-style: italic;
+        }
+
+        .offering-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            position: relative;
+        }
+
+        .offering-card p {
+            color: rgba(250, 247, 242, 0.7);
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .offering-features {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(250, 247, 242, 0.1);
+            position: relative;
+        }
+
+        .offering-features li {
+            list-style: none;
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            color: rgba(250, 247, 242, 0.7);
+            font-size: 0.85rem;
+        }
+
+        .offering-features li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--blush);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--warm-white);
+        }
+
+        .testimonials-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 8rem;
+            color: var(--sage-light);
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            line-height: 1;
+            opacity: 0.5;
+        }
+
+        .testimonial-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .testimonial-author {
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--warm-gray);
+        }
+
+        .testimonial-author span {
+            color: var(--terracotta);
+        }
+
+        .testimonials-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--sage-light);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-dot.active {
+            background: var(--blush);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            background: var(--linen);
+            text-align: center;
+            position: relative;
+        }
+
+        .contact-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            border: 1px solid var(--sage-light);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .contact-cta h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-cta h2 em {
+            font-style: italic;
+            color: var(--blush);
+        }
+
+        .contact-cta p {
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+            color: var(--warm-gray);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: var(--blush);
+            color: var(--warm-white);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--blush-dark);
+            transition: left 0.4s ease;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn span {
+            position: relative;
+        }
+
+        .btn svg {
+            width: 16px;
+            height: 16px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 5rem 4% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-brand .logo {
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .footer-brand p {
+            color: rgba(250, 247, 242, 0.6);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .footer-column h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: var(--blush);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column a {
+            color: rgba(250, 247, 242, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--cream);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(250, 247, 242, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: rgba(250, 247, 242, 0.4);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: rgba(250, 247, 242, 0.6);
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--blush);
+        }
+
+        .social-links svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-visual {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .doulas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .doula-card.featured {
+                grid-column: span 1;
+                grid-template-columns: 1fr;
+            }
+
+            .offerings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 4%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 5rem 4%;
+            }
+
+            .floating-accent {
+                display: none;
+            }
+
+            .doulas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">Mana <span>Postpartum</span></a>
+        <ul class="nav-links">
+            <li><a href="#philosophy">Our Philosophy</a></li>
+            <li><a href="#doulas">Meet Our Doulas</a></li>
+            <li><a href="#offerings">Offerings</a></li>
+            <li><a href="#testimonials">Kind Words</a></li>
+            <li><a href="#contact">Connect</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-label">Birth & Postpartum Support</span>
+                <h1>Where <em>nurturing</em> begins</h1>
+                <p class="hero-description">A collective of experienced doulas walking beside you through the profound journey of birth and early parenthood. We hold space for the sacred, the messy, and everything in between.</p>
+                <a href="#doulas" class="btn">
+                    <span>Find Your Doula</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-frame">
+                    <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&q=80" alt="Mother and newborn" loading="eager">
+                </div>
+                <div class="floating-accent">
+                    <p>"You already hold everything you need."</p>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy" id="philosophy">
+        <div class="section-header fade-in">
+            <h2>Our Philosophy</h2>
+            <p>We believe support should feel personal, grounding, and deeply respectful. What unites us is our commitment to holistic, person-led care that honours your values, identity, and choices.</p>
+        </div>
+        <div class="philosophy-grid">
+            <div class="philosophy-card fade-in">
+                <h3>Personalised Care</h3>
+                <p>We meet you where you are, offering tailored support that honours your unique journey. Every family is different, and our care adapts to what you need most—whether that's practical help, emotional support, or simply a calm presence.</p>
+            </div>
+            <div class="philosophy-card fade-in">
+                <h3>Informed & Inclusive</h3>
+                <p>We meet you with deep respect for your lived experience and work with all kinds of families and postpartum journeys. No judgement, just compassionate support grounded in evidence-based knowledge.</p>
+            </div>
+            <div class="philosophy-card fade-in">
+                <h3>Holistic Support</h3>
+                <p>We blend practical wisdom with nurturing care, supporting body, mind, and spirit through one of life's most powerful transitions. From nourishing meals to a listening ear—we're here for all of it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doulas Section -->
+    <section class="doulas-section" id="doulas">
+        <div class="section-header fade-in">
+            <h2>Meet Your Doulas</h2>
+            <p>We are Hannah and Julia—warm, knowledgeable companions here to walk beside you through the tender days of early parenthood and postpartum healing.</p>
+        </div>
+        <div class="doulas-grid">
+            <!-- Featured Doula - Hannah -->
+            <div class="doula-card featured fade-in">
+                <div class="doula-image">
+                    <span class="doula-badge">Postpartum Doula</span>
+                    <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=800&q=80" alt="Hannah" loading="lazy">
+                </div>
+                <div class="doula-content">
+                    <h3 class="doula-name">Hannah</h3>
+                    <div class="doula-specialties">
+                        <span class="specialty-tag">Postpartum Care</span>
+                        <span class="specialty-tag">Nourishment</span>
+                        <span class="specialty-tag">Newborn Support</span>
+                    </div>
+                    <p class="doula-excerpt">Hannah brings warmth, presence, and grounded support to families navigating the tender early days of parenthood. With intuitive care and a nurturing approach, she creates space for you to rest, recover, and find your rhythm. Whether it's a hand to hold, a nourishing meal, or simply someone to listen—Hannah is there to help you feel held and supported.</p>
+                    <a href="#" class="doula-link">
+                        View Full Profile
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Featured Doula - Julia -->
+            <div class="doula-card featured fade-in">
+                <div class="doula-image">
+                    <span class="doula-badge">Postpartum Doula</span>
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80" alt="Julia" loading="lazy">
+                </div>
+                <div class="doula-content">
+                    <h3 class="doula-name">Julia</h3>
+                    <div class="doula-specialties">
+                        <span class="specialty-tag">Fourth Trimester</span>
+                        <span class="specialty-tag">Family Support</span>
+                        <span class="specialty-tag">Calm Presence</span>
+                    </div>
+                    <p class="doula-excerpt">Julia offers deeply personalised care, recognising that every motherhood journey is as unique as the person experiencing it. Her approach is grounded in non-judgmental listening and compassionate support, creating a safe and welcoming space where every feeling is honoured. Julia helps lighten your load so you can truly embrace the sacred transition into parenthood.</p>
+                    <a href="#" class="doula-link">
+                        View Full Profile
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offerings Section -->
+    <section class="offerings" id="offerings">
+        <div class="section-header fade-in">
+            <h2>Our Offerings</h2>
+            <p>Nurturing support through the sacred fourth trimester. We meet you where you are and walk beside you through the tender transformation into parenthood.</p>
+        </div>
+        <div class="offerings-grid">
+            <div class="offering-card fade-in">
+                <span class="offering-number">01</span>
+                <h3>In-Home Postpartum Support</h3>
+                <p>We come to you, offering hands-on support during those precious and sometimes overwhelming early weeks. Rest while we care for your baby, help with household tasks, or simply be a calm presence in your home.</p>
+                <ul class="offering-features">
+                    <li>Daytime in-home visits</li>
+                    <li>Newborn care & settling</li>
+                    <li>Light household support</li>
+                    <li>Sibling care assistance</li>
+                </ul>
+            </div>
+            <div class="offering-card fade-in">
+                <span class="offering-number">02</span>
+                <h3>Nourishment & Recovery</h3>
+                <p>Good food is medicine. We prepare warming, nutrient-rich meals designed to support your postpartum recovery and breastfeeding journey—so you can focus on bonding with your baby.</p>
+                <ul class="offering-features">
+                    <li>Nourishing meal preparation</li>
+                    <li>Postpartum nutrition guidance</li>
+                    <li>Freezer meal stocking</li>
+                    <li>Breastfeeding support snacks</li>
+                </ul>
+            </div>
+            <div class="offering-card fade-in">
+                <span class="offering-number">03</span>
+                <h3>Emotional & Practical Guidance</h3>
+                <p>The fourth trimester can feel isolating. We offer a listening ear, evidence-based information, and gentle guidance to help you navigate feeding, sleep, and the emotional landscape of new parenthood.</p>
+                <ul class="offering-features">
+                    <li>Non-judgmental listening</li>
+                    <li>Infant feeding support</li>
+                    <li>Sleep & settling guidance</li>
+                    <li>Resource & referral connections</li>
+                </ul>
+            </div>
+            <div class="offering-card fade-in">
+                <span class="offering-number">04</span>
+                <h3>Postpartum Planning</h3>
+                <p>Preparation makes all the difference. We help you create a postpartum plan before baby arrives—mapping out support, meals, boundaries, and self-care so you can step into parenthood feeling ready.</p>
+                <ul class="offering-features">
+                    <li>Prenatal consultation</li>
+                    <li>Postpartum plan creation</li>
+                    <li>Support network mapping</li>
+                    <li>Resource preparation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header fade-in">
+            <h2>Kind Words</h2>
+            <p>Hear from families who have been supported through their postpartum journey.</p>
+        </div>
+        <div class="testimonials-container">
+            <div class="testimonial fade-in" id="testimonial-1">
+                <p class="testimonial-text">She treated me like a postpartum mom—gently and tenderly handling my precious experience. Every detail reflects the heart of my journey, and the support felt completely aligned with who I am.</p>
+                <p class="testimonial-author">— Kimberly B. <span>|</span> First-time Mum</p>
+            </div>
+        </div>
+        <div class="testimonials-nav">
+            <button class="testimonial-dot active" aria-label="Testimonial 1"></button>
+            <button class="testimonial-dot" aria-label="Testimonial 2"></button>
+            <button class="testimonial-dot" aria-label="Testimonial 3"></button>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta" id="contact">
+        <div class="section-header fade-in">
+            <h2>Ready to feel <em>supported</em>?</h2>
+            <p>Let's connect and explore how Hannah and Julia can support you through the fourth trimester. Your village is waiting.</p>
+            <a href="mailto:hello@manapostpartum.com.au" class="btn">
+                <span>Begin the Conversation</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">Mana <span>Postpartum</span></a>
+                <p>Hannah and Julia are postpartum doulas serving Melbourne's Northern Suburbs through Mana Health Practice. We believe in holistic, person-led care that honours your unique journey into parenthood.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Navigate</h4>
+                <ul>
+                    <li><a href="#philosophy">Our Philosophy</a></li>
+                    <li><a href="#doulas">Meet Our Doulas</a></li>
+                    <li><a href="#offerings">Offerings</a></li>
+                    <li><a href="#testimonials">Kind Words</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">In-Home Support</a></li>
+                    <li><a href="#">Postpartum Nourishment</a></li>
+                    <li><a href="#">Newborn Care</a></li>
+                    <li><a href="#">Postpartum Planning</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="mailto:hello@manapostpartum.com.au">hello@manapostpartum.com.au</a></li>
+                    <li><a href="#">Melbourne, Victoria</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Mana Postpartum. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="18" cy="6" r="1"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Testimonial dots interaction (simple visual feedback)
+        document.querySelectorAll('.testimonial-dot').forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                document.querySelectorAll('.testimonial-dot').forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
